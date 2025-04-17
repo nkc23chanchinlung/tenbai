@@ -25,4 +25,8 @@ public class Enemy : MonoBehaviour
     {
         return target;
     }
+    public void Respon()
+    {
+
+    }
 }
