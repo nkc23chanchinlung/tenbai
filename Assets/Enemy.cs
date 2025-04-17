@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField]GameObject Target;
+    EnemyManager enemyManager;
+    
     // Start is called before the first frame update
     void Start()
     {
-        Target=GameObject.FindWithTag("Player");
+        enemyManager = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        transform.position = Vector3.MoveTowards(transform.position, enemyManager.Target.transform.position, 0.01f);
     }
     /// <summary>
     /// 
@@ -25,8 +27,5 @@ public class Enemy : MonoBehaviour
     {
         return target;
     }
-    public void Respon()
-    {
-
-    }
+    
 }
