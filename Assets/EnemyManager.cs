@@ -10,6 +10,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] GameObject[] enemyPrefab;
     public int maxEnemies = 5;
     public int size = 10;
+    [SerializeField] float responTime = 5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +29,7 @@ public class EnemyManager : MonoBehaviour
         {
             float posx = Mathf.Sin(Mathf.PI * 2 * i / maxEnemies) * size;
             float posy = Mathf.Cos(Mathf.PI * 2 * i / maxEnemies) * size;
-            Instantiate(obj, new Vector3(posx, posy, 0), quaternion.identity);
+            Instantiate(obj, new Vector3(posx, posy, 0)+Target.transform.position, quaternion.identity);
         }
     }
 }

@@ -5,7 +5,8 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     EnemyManager enemyManager;
-    
+    [SerializeField]int speed =3;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,15 +17,16 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, enemyManager.Target.transform.position, 0.01f);
+      FindTarget(enemyManager.Target);
     }
     /// <summary>
     /// 
     /// </summary>
     /// <param name="target"></param>
     /// <returns></returns>
-    GameObject FIndTarget(GameObject target)
+    GameObject FindTarget(GameObject target)
     {
+        transform.position = Vector3.MoveTowards(transform.position,target.transform.position, speed * Time.deltaTime);
         return target;
     }
     
