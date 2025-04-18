@@ -15,4 +15,8 @@ public class ShopManager : MonoBehaviour
     {
         
     }
+    public void Weapon1()
+    {
+        
+    }
 }

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Weapon")]
+    [SerializeField]WeaponManager weaponManager;
+    
     [SerializeField]GameObject[] Weapon;
     public float weaponCooldown { get; set; }
     public int speed { get; set; }
