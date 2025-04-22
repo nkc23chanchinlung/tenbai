@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
+    [Header("Debug")]
+    [SerializeField] bool EnemyRespon;
     public GameObject Target { get; private set; }
     
     [SerializeField] GameObject[] enemyPrefab;
@@ -15,6 +17,7 @@ public class EnemyManager : MonoBehaviour
     void Start()
     {
         Target = GameObject.FindWithTag("Player");
+        if(EnemyRespon)
         Respon(enemyPrefab[0]);
     }
 

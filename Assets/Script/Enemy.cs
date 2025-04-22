@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     EnemyManager enemyManager;
+    [SerializeField] GameObject money;
     [SerializeField]int speed =3;
 
     // Start is called before the first frame update
@@ -31,7 +32,9 @@ public class Enemy : MonoBehaviour
     }
     private void OnDestroy()
     {
-        Debug.Log(transform.position);
+
+        Instantiate(money,transform.position, Quaternion.identity);
+        
     }
 
 }

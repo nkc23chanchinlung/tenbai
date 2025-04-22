@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Debug")]
+    [SerializeField] bool unrivaled;
     [Header("Weapon")]
     [SerializeField]WeaponManager weaponManager;
     
     [SerializeField]GameObject[] Weapon;
+    [Header("Player Stats")]
+    [SerializeField] int speed;
+    [SerializeField] int maxhp;
+    [SerializeField] int hp;
+    [SerializeField] float MaxWpCooldown;
     public float weaponCooldown { get; set; }
-    public int speed { get; set; }
+    public int _speed { get { return speed; } set { speed = value; } }
+    CircleCollider2D circleCollider2d;
     
     // Start is called before the first frame update
     void Start()
@@ -56,7 +64,7 @@ public class PlayerController : MonoBehaviour
         if (weaponCooldown < 0)
         {
             Instantiate(Weapon[0], transform.position-transform.up, transform.rotation);
-            weaponCooldown = 2;
+            weaponCooldown = MaxWpCooldown;
 
         }
     }
