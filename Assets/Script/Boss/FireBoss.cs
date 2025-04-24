@@ -9,12 +9,18 @@ public enum BossState
     Attack,
     Dead
 }
+public enum Sill
+{
+    FireBall,
+    FireWall,
+    FireRain
+}
 public class FireBoss : MonoBehaviour
 {
     
     [Header("Prefebs")]
     [SerializeField]Transform player;
-    [SerializeField] GameObject area;
+    [SerializeField] GameObject range;
     [Header("State")]
     [SerializeField] private int Speed;
     [SerializeField] int Hp_Max;
@@ -23,18 +29,47 @@ public class FireBoss : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        state = BossState.Move;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         Move();
+        state = GetState();
         Debug.Log(state);
+       
+        switch (state) //bossÇÃèÛë‘
+        {
+            case BossState.Idle:
+                Idle();
+                break;
+            case BossState.Move:
+                Move();
+                break;
+            case BossState.Attack:
+                Attack();
+                break;
+            case BossState.Dead:
+                Dead();
+                break;
+        }
+
+    }
+    BossState GetState()
+    {
+        float distance = Vector3.Distance(player.position, transform.position);
+        if (distance < 10) return BossState.Move;
+        return BossState.Idle;
+    }
+    void Idle()
+    {
+
     }
    private void Move()
-    { 
-    if(state == BossState.Move)
+    {
+        float distance = Vector3.Distance(player.position, transform.position);
+        if (state == BossState.Move)
         {
            
             // Move to player
@@ -42,5 +77,7 @@ public class FireBoss : MonoBehaviour
             transform.position += direction * Time.deltaTime*Speed;
         }
     }
+    void Attack() { }
+    void Dead() { }
     
 }

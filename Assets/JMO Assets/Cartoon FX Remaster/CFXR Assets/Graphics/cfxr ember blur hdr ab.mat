@@ -15,9 +15,11 @@ Material:
   m_ValidKeywords:
   - _ALPHABLEND_ON
   - _CFXR_DITHERED_SHADOWS_ON
+  - _CFXR_LIGHTING_ALL
+  - _CFXR_LIGHTING_BACK
+  - _EMISSION
   - _FADING_ON
   m_InvalidKeywords:
-  - _
   - _CFXR_HDR_BOOST
   - _CFXR_OVERLAYBLEND_RGBA
   - _CFXR_OVERLAYTEX_OFF
@@ -96,7 +98,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BacklightTransmittance: 1
+    - _BacklightTransmittance: 2
     - _BlendingType: 0
     - _BumpScale: 1
     - _CFXR_DITHERED_SHADOWS: 1
@@ -104,7 +106,7 @@ Material:
     - _CFXR_OVERLAYTEX: 0
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _DirLightScreenAtten: 1
+    - _DirLightScreenAtten: 1.83
     - _DirectLightingMix: 0.5
     - _DirectLightingRamp: 1
     - _DissolveSmooth: 0.2
@@ -119,8 +121,8 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _HdrBoost: 1
-    - _HdrMultiply: 10
-    - _IndirectLightingMix: 0.5
+    - _HdrMultiply: 400
+    - _IndirectLightingMix: 1
     - _InvertDissolveTex: 0
     - _LightingWorldPosStrength: 0.2
     - _Metallic: 0
@@ -140,15 +142,15 @@ Material:
     - _UVDistortionAdd: 0
     - _UVSec: 0
     - _UseAlphaClip: 0
-    - _UseBackLighting: 0
+    - _UseBackLighting: 1
     - _UseDissolve: 0
     - _UseDissolveOffsetUV: 0
     - _UseEF: 0
-    - _UseEmission: 0
+    - _UseEmission: 1
     - _UseFB: 0
     - _UseFontColor: 0
     - _UseGradientMap: 0
-    - _UseLighting: 0
+    - _UseLighting: 3
     - _UseLightingWorldPosOffset: 0
     - _UseNormalMap: 0
     - _UseSP: 1
@@ -162,6 +164,6 @@ Material:
     - _DistortScrolling: {r: 0, g: 0, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _OverlayTex_Scroll: {r: 0.1, g: 0.1, b: 1, a: 1}
-    - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
+    - _ShadowColor: {r: 1, g: 0.44892472, b: 0, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
