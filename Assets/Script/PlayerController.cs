@@ -68,13 +68,15 @@ public class PlayerController : MonoBehaviour
 
         }
     }
-    private void OnCollisionEnter(Collision collision)
+    
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log(collision.gameObject.name);
-        if (collision.gameObject.CompareTag("Damage"))
+        if (collision.gameObject.tag == "Damage")
         {
             hp -= 1;
             Destroy(collision.gameObject);
         }
+        
     }
 }

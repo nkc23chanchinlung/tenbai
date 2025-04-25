@@ -8,19 +8,17 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: test
-  m_Shader: {fileID: -6465566751694194690, guid: 94c13642993c1dc4a8fbc1c99236a1fd,
+  m_Shader: {fileID: -6465566751694194690, guid: a8e6ca6a37fbf3b4ab3efa6b63538f1a,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
-  - _ALPHATEST_ON
+  m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap:
-    RenderType: TransparentCutout
+  stringTagMap: {}
   disabledShaderPasses:
   - MOTIONVECTORS
   m_LockedProperties: 
@@ -49,6 +47,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_af001d824e4a47ebbe274361c60c95f2_Texture_1_Texture2D:
         m_Texture: {fileID: 2800000, guid: fe20325a6702d124191ca25e7cf4268c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_cab9baeec190437ca74e9060af16fe47_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 6a5ac34960eeb70468fe1c948deece88, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_efa520e5cdf24e48a39dec4e9d6c8357_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 6a5ac34960eeb70468fe1c948deece88, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TEX:
@@ -89,7 +95,7 @@ Material:
     - _alpha: 1
     - _cliptimer: -1
     m_Colors:
-    - _Color: {r: 128, g: 0, b: 0, a: 1}
+    - _Color: {r: 5.656854, g: 0.9339145, b: 0.9339145, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

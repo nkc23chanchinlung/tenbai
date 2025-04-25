@@ -9,17 +9,19 @@ public class FireBall : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Player=GameObject.FindWithTag("Player").transform;
        
-         Destroy(gameObject, 4f);
+        Player =GameObject.FindWithTag("Player").transform;
+        rot = Player.position - transform.position;
+        transform.rotation = Quaternion.FromToRotation(Vector3.up, rot);
+
+        Destroy(gameObject, 4f);
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        rot = Player.position - transform.position;
-        transform.rotation = Quaternion.FromToRotation(Vector3.up, rot);
+       
 
         transform.position += transform.up * Time.deltaTime * 10f;
     }
