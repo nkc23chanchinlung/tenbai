@@ -10,8 +10,7 @@ public class FireBall : MonoBehaviour
     void Start()
     {
         Player=GameObject.FindWithTag("Player").transform;
-        rot = Player.position - transform.position;
-        transform.rotation = Quaternion.FromToRotation(Vector3.up, rot);
+       
          Destroy(gameObject, 4f);
     }
 
@@ -19,8 +18,9 @@ public class FireBall : MonoBehaviour
     void Update()
     {
 
+        rot = Player.position - transform.position;
+        transform.rotation = Quaternion.FromToRotation(Vector3.up, rot);
 
-       
         transform.position += transform.up * Time.deltaTime * 10f;
     }
 }
