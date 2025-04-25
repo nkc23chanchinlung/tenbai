@@ -29,11 +29,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move(speed);
+        Controller(speed);
         Attack();
 
     }
-    private void Move(int speed)
+    private void Controller(int speed)
     {
         float Vec = Input.GetAxis("Vertical");
         float Hor = Input.GetAxis("Horizontal");
@@ -66,6 +66,15 @@ public class PlayerController : MonoBehaviour
             Instantiate(Weapon[0], transform.position-transform.up, transform.rotation);
             weaponCooldown = MaxWpCooldown;
 
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log(collision.gameObject.name);
+        if (collision.gameObject.CompareTag("Damage"))
+        {
+            hp -= 1;
+            Destroy(collision.gameObject);
         }
     }
 }
