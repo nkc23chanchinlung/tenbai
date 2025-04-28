@@ -101,7 +101,8 @@ public class FireBoss : MonoBehaviour
 
         if (Cooldown <= 0)
         {
-            Instantiate(Skilllist[(int)Skill.FireBall], transform.position - transform.up, transform.rotation);
+            for(int i = 0; i < 3;i++)
+            Instantiate(Skilllist[(int)Skill.FireBall], transform.position - (transform.up*(i*3)), transform.rotation);
             Cooldown = Cooldown_Max;
             state = BossState.Battle;
             
