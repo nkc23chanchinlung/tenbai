@@ -31,4 +31,11 @@ public class FireBall : MonoBehaviour
 
         transform.position += transform.up * Time.deltaTime * 10f;
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("wall"))
+        {
+            Destroy(gameObject);
+        }
+    }
 }

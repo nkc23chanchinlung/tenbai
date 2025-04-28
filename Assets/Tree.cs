@@ -32,8 +32,8 @@ public class Tree : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Damage"))
         {
-            Debug.Log("Hit");
             fire = true;    
+            Destroy(collision.gameObject);
         }
     }
 }
