@@ -33,21 +33,22 @@ public class FireBoss : MonoBehaviour
     FireBossSkill firebossskill;
     
     Transform Target;
-    BossState state;
+    BossState status;
     float Battletimer;
     float distance;
     float Cooldown;
     [SerializeField]GameObject[] Skilllist = { };
-    [SerializeField]Dictionary<Skill, GameObject> Skilllist_Dic = new Dictionary<Skill, GameObject>();
+    Dictionary<int,GameObject> Skilllist_Dic = new Dictionary<int, GameObject>();
     // Start is called before the first frame update
     void Start()
     {
-        state = BossState.Idle;
+        status = BossState.Idle;
         Cooldown = Cooldown_Max;
-        foreach (GameObject obj in Skilllist)
+        foreach (GameObject a in Skilllist)
         {
-            Skilllist_Dic.Add((Skill)System.Array.IndexOf(Skilllist, obj), obj);
+          
         }
+       
         firebossskill = new FireBossSkill();
     }
 
@@ -59,7 +60,7 @@ public class FireBoss : MonoBehaviour
        
        
        
-        switch (state) //bossÇÃèÛë‘
+        switch (status) //bossÇÃèÛë‘
         {
             case BossState.Idle:
                 Idle();
@@ -82,20 +83,20 @@ public class FireBoss : MonoBehaviour
   
     void Idle()
     {
-        if (distance < 10) state= BossState.Battle;
+        if (distance < 10) status= BossState.Battle;
         transform.position =Vector2.MoveTowards(transform.position, new Vector2(0,-3), Speed * Time.deltaTime);
     }
    private void Battle()
     {
         Cooldown -= Time.deltaTime;
-        if (state==BossState.Attack_Long) return; 
+        if (status==BossState.Attack_Long) return; 
         // Move to player
         Vector3 direction = (player.position - transform.position).normalized;
         transform.position += direction * Time.deltaTime*Speed;
         if (distance > 5) Battletimer += Time.deltaTime;
         else Battletimer = 0;
-        if (Battletimer > 5) state = BossState.Idle;
-        if(distance>5&&Cooldown<=0)state=BossState.Attack_Long;
+        if (Battletimer > 5) status = BossState.Idle;
+        if(distance>5&&Cooldown<=0)status=BossState.Attack_Long;
         
 
 
@@ -120,10 +121,10 @@ public class FireBoss : MonoBehaviour
                 Instantiate(Skilllist[(int)Skill.FireBall], transform.position - (transform.up * (i * 3)), rot);
             }
             Cooldown = Cooldown_Max;
-            state = BossState.Battle;
+            status = BossState.Battle;
             
         }
-        else state=BossState.Battle;
+        else status=BossState.Battle;
     }
     void Dead() 
     { 
