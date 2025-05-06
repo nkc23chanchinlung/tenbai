@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI.Table;
 
 public enum BossState
 {
@@ -29,6 +30,7 @@ public class FireBoss : MonoBehaviour
     [SerializeField] int Hp_Max;
     [SerializeField] float Hp;
     [SerializeField] int Cooldown_Max=3;
+    FireBossSkill firebossskill;
     
     Transform Target;
     BossState state;
@@ -36,16 +38,23 @@ public class FireBoss : MonoBehaviour
     float distance;
     float Cooldown;
     [SerializeField]GameObject[] Skilllist = { };
+    [SerializeField]Dictionary<Skill, GameObject> Skilllist_Dic = new Dictionary<Skill, GameObject>();
     // Start is called before the first frame update
     void Start()
     {
         state = BossState.Idle;
         Cooldown = Cooldown_Max;
+        foreach (GameObject obj in Skilllist)
+        {
+            Skilllist_Dic.Add((Skill)System.Array.IndexOf(Skilllist, obj), obj);
+        }
+        firebossskill = new FireBossSkill();
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         distance = Vector3.Distance(player.position, transform.position);
        
        
@@ -99,10 +108,17 @@ public class FireBoss : MonoBehaviour
     void Attack_Long()
     {
 
+      
         if (Cooldown <= 0)
         {
-            for(int i = 0; i < 3;i++)
-            Instantiate(Skilllist[(int)Skill.FireBall], transform.position - (transform.up*(i*3)), transform.rotation);
+            int power = 1;
+
+            for (int i = -power; i < power+1; i++)
+            {
+                Quaternion rot = Quaternion.identity;
+                rot.eulerAngles = transform.rotation.eulerAngles + new Vector3(0, 0, 15 * i);
+                Instantiate(Skilllist[(int)Skill.FireBall], transform.position - (transform.up * (i * 3)), rot);
+            }
             Cooldown = Cooldown_Max;
             state = BossState.Battle;
             
